@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Providers } from "./providers";
+import Navigation from "./components/Navigation";
+import LoaderScreen from "./components/LoaderScreen";
+import { Toaster } from 'sonner'
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -11,6 +15,12 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+
+const rubik = localFont({
+  src: "./fonts/Rubik-VariableFont_wght.ttf",
+  variable: "--font-rubik",
+  weight: "100 200 300 400 500 600 700 800 900",
 });
 
 export const metadata: Metadata = {
@@ -26,9 +36,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${rubik.variable} antialiased`}
       >
-        {children}
+        <div id="loadingRoot"></div>
+        <Toaster richColors closeButton />
+        <Providers>
+          <LoaderScreen />
+          <Navigation />
+          <header>
+            
+          </header>
+          {children}
+        </Providers>
       </body>
     </html>
   );
