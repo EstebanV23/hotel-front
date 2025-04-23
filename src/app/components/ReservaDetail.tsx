@@ -33,6 +33,12 @@ export default function ReservaDetail({
   const [total, setTotal] = useState(0)
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
+  function calculateDiffDates(start: Date, end: Date) {
+    const diffTime = Math.abs(end.getTime() - start.getTime())
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return diffDays
+  }
+
   function confirmReserva() {
     if (!token || !idUsuario) {
       onOpen()
@@ -176,7 +182,12 @@ export default function ReservaDetail({
             max={maxCapacity}
           />
           <div className="">
-            <p className="text-medium font-bold text-nowrap"><small className="text-small font-normal">Total:</small> {formatCurrency(total)}</p>
+            <div className="text-medium font-bold text-nowrap flex flex-col">
+              <small className="text-small font-light text-gray-400">Dias: {calculateDiffDates(startDate, endDate)}</small>
+              <p>
+                <small className="text-small font-normal">Total:</small> {formatCurrency(total)}
+              </p>
+            </div>
             <Button
               color="secondary"
               variant="flat"

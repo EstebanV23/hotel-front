@@ -8,11 +8,13 @@ export default function PasswordInput({
   errorsInputs,
   startValidate,
   initVisible = false,
-  name
+  name,
+  label = "Contraseña",
 }: {
   errorsInputs: ErrorInputs[],
   startValidate: boolean,
   initVisible?: boolean,
+  label?: string,
   name: string
 }) {
   const [visible, setVisible] = useState(initVisible);
@@ -23,7 +25,7 @@ export default function PasswordInput({
 
   return (
     <MyInput
-      label="Contraseña"
+      label={label}
       placeholder="******"
       type={visible ? "text" : "password"}
       errorMessage="Tu contraseña no debe estar vacía"

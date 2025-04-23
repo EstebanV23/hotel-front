@@ -23,7 +23,6 @@ export default function FormLogin({
   const { setUser } = useAuthStore((store) => store)
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    console.log({errorsInputs})
     event.preventDefault();
     setStartValidate(true);
     if (errorsInputs.some(error => error.isInvalid)) return;
@@ -54,12 +53,10 @@ export default function FormLogin({
         idUsuario: response.data.user.id_usuario,
         nomUsuario: response.data.user.nom_usuario,
         emaUsuario: response.data.user.ema_usuario,
+        token: response.data.token
       }))
-      
-      localStorage.setItem('token', response.data.token)
 
       onClose()
-      console.log("Toooo gooodd");
       if (toUrl) {
         router.push(toUrl)
       }

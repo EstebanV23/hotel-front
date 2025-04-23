@@ -12,7 +12,8 @@ export default function MyInput ({
   startValidate,
   regex,
   endContent,
-  name
+  name,
+  startContent
 } : {
   type: string,
   label: string,
@@ -24,6 +25,7 @@ export default function MyInput ({
   regex?: RegExp,
   endContent?: JSX.Element,
   name: string
+  startContent?: JSX.Element
 }) {
   const [value, setValue] = useState(initValue);
   const [isInvalid, setIsInvalid] = useState(false);
@@ -71,6 +73,7 @@ export default function MyInput ({
       ref={inputRef}
       endContent={endContent}
       name={name}
+      startContent={startContent}
     />
   );
 }

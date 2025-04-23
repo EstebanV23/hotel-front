@@ -25,6 +25,8 @@ export default function Filtros({
   nextYearDateTime.setFullYear(currentDateTime.getFullYear() + 1)
   const endDate = new Date()
   endDate.setDate(currentDateTime.getDate() + 1)
+  const myDate = new Date()
+  myDate.setHours(0, 0, 0, 0)
 
   const [servicios, setServicios] = useState<Set<Servicio>>(new Set())
   const [personas, setPersonas] = useState<string>('')
@@ -60,8 +62,8 @@ export default function Filtros({
     getHabitaciones({
       cantPersonas: Number(personas),
       servicios: Array.from(servicios).map(servicio => servicio.id_servicio),
-      fecInicio: dateRange?.start.toDate('America/Bogota') ?? new Date(),
-      fecFinal: dateRange?.end.toDate('America/Bogota') ?? new Date()
+      fecInicio: dateRange?.start.toDate('America/Bogota') ?? myDate,
+      fecFinal: dateRange?.end.toDate('America/Bogota') ?? myDate
     })
       .then((data) => {
         if (!data) return

@@ -1,6 +1,7 @@
 import { Button, Card, CardBody, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Tab, Tabs } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import FormLogin from "./FormLogin";
+import FormRegister from "./FormRegister";
 
 export default function ModalLogin({
   isOpen,
@@ -20,7 +21,7 @@ export default function ModalLogin({
               <ModalBody>
               <Tabs color="primary" aria-label="login or register">
                 <Tab key="login" title="Iniciar sesión">
-                  <Card>
+                  <Card className="max-h-[60vh] overflow-y-auto">
                     <CardBody>
                       <FormLogin
                         onClose={onClose}
@@ -30,9 +31,12 @@ export default function ModalLogin({
                   </Card>  
                 </Tab>
                 <Tab key="register" title="Registrarse">
-                  <Card>
+                  <Card className="max-h-[60vh] overflow-y-auto">
                     <CardBody>
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    <FormRegister
+                        onClose={onClose}
+                        toUrl={toUrl}
+                      />
                     </CardBody>
                   </Card>  
                 </Tab>

@@ -36,7 +36,7 @@ export default function CardHabitacion({
           {
             habitacion.servicio_habitacion.map((servicioHabitacion) => {
               return (
-                <div className="flex gap-3 items-center">
+                <div className="flex gap-3 items-center" key={servicioHabitacion.id_servicio_servicio_habitacion + 'servicioHabitacion'}>
                   <Iconos iconString={servicioHabitacion.servicio_tbl.tipo_servicio_tbl.ico_tipo_servicio} />
                   <p>{servicioHabitacion.can_servicio_habitacion} {servicioHabitacion.servicio_tbl.nom_servicio}</p>
                 </div>

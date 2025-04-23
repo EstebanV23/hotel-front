@@ -5,6 +5,8 @@ import { Providers } from "./providers";
 import Navigation from "./components/Navigation";
 import LoaderScreen from "./components/LoaderScreen";
 import { Toaster } from 'sonner'
+import AuthProvider from "./providers/AuthProvider";
+import ReservaProvider from "./providers/ReservaProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,12 +43,13 @@ export default function RootLayout({
         <div id="loadingRoot"></div>
         <Toaster richColors closeButton />
         <Providers>
-          <LoaderScreen />
-          <Navigation />
-          <header>
-            
-          </header>
-          {children}
+          <AuthProvider>
+            <ReservaProvider>
+              <LoaderScreen />
+              <Navigation />
+              {children}
+            </ReservaProvider>
+          </AuthProvider>
         </Providers>
       </body>
     </html>
